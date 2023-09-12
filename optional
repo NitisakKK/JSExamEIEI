@@ -1,0 +1,11 @@
+// optional chaining ?. ใช้เมื่อมีความเสี่ยงตัวแปรไม่มีค่าเพื่อเช็คค่า
+let a; // undefine
+// with array
+console.log(a?.[0]); // error cannot read เราต้องใช้ ? เพิื่อให้มันอ่านได้
+
+// with object
+let b = { id: 1, fullname: "somchai" };
+// 1. use . before property name
+console.log(b?.id);
+// 2. use ['proerty name'] in []
+console.log(b["id"]);
