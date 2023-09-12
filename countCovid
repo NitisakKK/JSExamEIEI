@@ -1,0 +1,99 @@
+const { template } = require("@babel/core");
+/* 
+ข้อ 1. ให้เขียน Function ชื่อ countCovidStatus (covidStatusArray) เพื่อ return object ที่แสดงรายการสถานะที่แตกต่างกันและจำนวนคนที่อยู่ในสถานะนั้น 
+โดยสถานะโควิดของทุกคนเก็บอยู่ในพารามิเตอร์ covidStatusArray ซึ่งมี 3 สถานะ ได้แก่ 'negative and low risk', 'negative and high risk', 'positive' (case sensitive)
+
+- กรณี covidStatusArray เป็น null หรือ undefined ให้คืนค่าเป็น undefined
+- กรณี covidStatusArray เป็น empty array [ ] ให้คืนเป็น empty object { }
+- กรณี covidStatusArray ปรากฎรายการที่ไม่ใช่สถานะโควิดที่กำหนด ไม่ต้องนับรายการนั้น และถ้าไม่มีรายการอื่นที่ต้องนับ ให้คืนเป็น empty object { }
+
+- ตัวอย่างเช่น
+  - covidStatusArray = ['negative and low risk', 'positive', 'negative and low risk', 'negative and high risk', 'positive', 'negative and low risk' ] return { 'negative and low risk': 3, positive: 2, 'negative and high risk': 1}
+  - covidStatusArray = ['positive', 'negative and low risk', 'positive' ] return { 'negative and low risk’: 1, 'positive' : 2}
+  - covidStatusArray = ['negative and low risk', 'positive', 'negative and low risk', 'abnormal', 'negative and high risk', 'positive', ' normal' ] return { 'negative and low risk’: 2, positive: 2, 'negative and high risk': 1}
+  - covidStatusArray = ['covid'] return { }
+  - covidStatusArray = [ ] return { }
+  - covidStatusArray = null return undefined
+  - covidStatusArray = undefined return undefined */
+
+function countCovidStatus(covidStatusArray) {
+  const sensitive = [
+    "negative and low risk",
+    "negative and high risk",
+    "positive",
+  ];
+  let countCovide = {};
+  if (!covidStatusArray) {
+    return undefined;
+  }
+  for (const status of covidStatusArray) {
+    for (const check of sensitive) {
+      if (status === check) {
+        if (countCovide[status] === undefined) {
+          countCovide[status] = 1;
+        } else {
+          countCovide[status] = countCovide[status] + 1;
+        }
+      }
+    }
+  }
+  return countCovide;
+}
+module.exports = countCovidStatus;
+
+---------------------------------------------
+  const countCovidStatus = function (covidStatusArray) {
+  const status = ['negative and low risk', 'negative and high risk', 'positive']
+  if (!covidStatusArray)
+    return undefined;
+  const report = {}
+  covidStatusArray.forEach((entire) => {
+    if (status.includes(entire))
+      report[entire] = report[entire] ? report[entire] + 1 : 1
+  })
+  return report
+}
+const countCovidStatus2 = function (covidStatusArray) {
+  const status = ['negative and low risk', 'negative and high risk', 'positive']
+  if (!covidStatusArray)
+    return undefined;
+  const report = {};
+  for (let entire of covidStatusArray) {
+    for (let check of status) {
+      if (entire === check) {
+        if (report[entire] === undefined) {
+          report[entire] = 1;
+        } else
+          report[entire] = report[entire] + 1;
+      }
+    }
+  }
+  return report
+}
+  -------------------------------------------------------
+  function countCovidStatus(covidStatusArray) {
+  // Check if covidStatusArray is null or undefined
+  if (covidStatusArray === null || covidStatusArray === undefined) {
+    return undefined;
+  }
+
+  // Initialize an empty object to store the counts
+  const statusCounts = {};
+
+  // Define the valid COVID-19 statuses
+  const validStatuses = ['negative and low risk', 'negative and high risk', 'positive'];
+
+  // Loop through the array and count the statuses
+  for (const status of covidStatusArray) {
+    // Check if the status is a valid COVID-19 status
+    if (validStatuses.includes(status)) {
+      // Increment the count for the status or initialize it to 1 if it doesn't exist
+      statusCounts[status] = (statusCounts[status] || 0) + 1;
+    }
+  }
+
+  return statusCounts;
+}
+
+// Export the function for testing or use in other modules
+module.exports = countCovidStatus;
