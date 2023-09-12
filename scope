@@ -1,0 +1,27 @@
+// x is a global scope
+// ออกสอบแน่นอน
+
+let x = 1;
+{
+  // x is a block scope
+  let x = 2;
+  console.log(x); // x = 2;
+}
+console.log(x); // x = 1
+
+function doIt(y) {
+  // y is a function scope
+  console.log(y);
+}
+doIt(100);
+console.log(x);
+
+let msg = "hello";
+console.log(msg.charAt(0)); // String use zero based index same Array
+let msgs = [...msg]; // spread operator
+console.log(msgs);
+
+// explicit
+let n = "2";
+console.log(typeof n);
+console.log(typeof Number(n)); // explict type conversion
