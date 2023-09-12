@@ -1,0 +1,43 @@
+// syschronous programming แต่ละบรรทัดจะทำงานให้เสร็จ ทำไปทีละบรรทัด
+// interpreter translator ถ้าเจอ error จะหยุดการทำงานในบรรทัดนั้นทันทีและจะไม่อ่านทีเหลือ
+// stack เข้าก่อนออกทีหลัง
+function greeting(someone) {
+  return "Hello " + someone;
+}
+/*let $myName = "Nitisak Kangkhan";
+$myName = 10; // weakly and dynamic data stype
+console.log("Starting. . .");
+setTimeout(() => {
+  // function เอาไว้หน่วงเวลา เป็น asyschoronous programming
+  console.log("more complex task finish...");
+}, 20000); // หน่วยเป็น ms
+setTimeout(() => {
+  // function เอาไว้หน่วงเวลา เป็น asyschoronous programming
+  console.log("Simple complex task finish...");
+}, 2000);
+
+console.log($myName);
+console.log("Good Bye . . .");
+console.log(greeting($myName));
+
+let msg = "I'm a teacher";
+msg.toUpperCase;
+*/
+
+let a = null;
+console.log(a);
+let total;
+console.log(total);
+if (total === undefined) console.log("Variable does not have initial value");
+if (a === null) console.log("Variable is null value");
+// = กำหนด ค่า == เช็คเท่ากับเช็คแค่ value แต่ไม่เช็ค type === เช็คทั้งหมด
+// `` เรียก backtick
+if ("2" == 2) console.log(`'2' == 2' : ${"2" == 2} `);
+if ("2" === 2) console.log(`'2' === 2' : ${"2" == 2} `);
+// use == true if use === null because check just values
+
+// object sample
+const obj = { id: 1001, name: "Nitisak", price: 300 };
+const obj2 = { id: 2001 };
+// obj = obj2 // obj cannot change reference value
+obj.id = 999; //but obj can update its properties
