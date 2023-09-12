@@ -1,0 +1,79 @@
+// weakly and dyamic type
+/*
+let num = 1;
+console.log(typeof num);
+num = true;
+console.log(typeof num);
+
+if (num === "Boolean") console.log(`num is boolean`);
+
+let a = 1n; // เอาไปเก็บเป็น big int
+console.log(typeof a);
+
+let b = 1.2;
+console.log(typeof b);
+
+let c = "abc";
+console.log(typeof c);
+
+// implicit type conversion (String to boolean)
+if ("1") console.log("true");
+else console.log("false");
+
+// implicit type conversion (number to boolean) if 0 = false / if 1 = true
+if (0) console.log("true");
+else console.log("false");
+
+let msg = "";
+if (msg) console.log("true");
+else console.log("false");
+// object type is mutable สามาแก้ไขได้
+// object array
+const e = [1, 3, 4, 5];
+console.log(e);
+e[e.length] = 7;
+console.log(e);
+// object data type
+const obj = { id: 1, price: 200 };
+console.log(typeof obj);
+*/
+function doSomeThing(activity) {
+  // === check data type and value , == only value don care data type
+  if (activity === null || activity === undefined) return " no activity";
+  return `${activity} is don`;
+}
+console.log(typeof doSomeThing);
+let act1; // undefined
+let act2 = null; // null
+let act3 = "JS Learning"; // string
+console.log(doSomeThing(act1)); // no activity
+console.log(doSomeThing(act2)); // no activity
+console.log(doSomeThing(act3)); // is don
+
+// Box Scope โดยจะมีแค่ let const
+// เมื่อเวลาเราเรียกใช้จะเรียกได้แค่ใน box เท่านั้น
+{
+  let x = 1;
+  const y = 1;
+}
+
+// Function Scope พวกตัวแปรจะใช้ได้แค่ใน function เท่านั้นจะอ้างออกมาข้างนอกไม่ได้
+function myFunction() {
+  let studentName1 = "Somchai";
+  const studentName2 = "Somsak";
+  console.log(studentName1);
+  console.log(studentName2);
+}
+// Global Scope ตัวแปรที่อยู่นอก function หรือ block คือสามารถดึงมาใช้ได้หมด
+
+let num1 = 10;
+const num2 = 20;
+
+function testGlobalScope() {
+  console.log(num1);
+  console.log(num2);
+  num1++;
+}
+testGlobalScope();
+console.log(num1);
+console.log(num2);
